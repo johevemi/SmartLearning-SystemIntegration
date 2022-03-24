@@ -38,7 +38,8 @@ namespace Forecast.Controllers
                 CloudCover = currentConditions.cloudcover,
                 Visibility = currentConditions.visibility,
                 Sunrise = currentConditions.sunrise,
-                Sunset = currentConditions.sunset
+                Sunset = currentConditions.sunset,
+                Condition = currentConditions.icon
             });
 
             for (int i = 0; i < 24; i++)
@@ -51,7 +52,8 @@ namespace Forecast.Controllers
                     CloudCover = condition.cloudcover,
                     Visibility = condition.visibility,
                     Sunrise = currentConditions.sunrise,
-                    Sunset = currentConditions.sunset
+                    Sunset = currentConditions.sunset,
+                    Condition = condition.conditions
                 });
             }  
             return next24hours;

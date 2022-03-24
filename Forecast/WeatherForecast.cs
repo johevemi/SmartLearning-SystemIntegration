@@ -15,5 +15,7 @@ namespace Forecast
         public DateTime Sunset { get; set; }
 
         public float? Visibility { get; set; }
+
+        public string? Condition { get; set; }
     }
 }
