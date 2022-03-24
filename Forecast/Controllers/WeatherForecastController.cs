@@ -25,10 +25,10 @@ namespace Forecast.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> GetNext24Hours()
+        public IEnumerable<WeatherForecast> GetNext24Hours([FromHeader] string password)
         {
             var client = new ForecastServiceClient();
-            var result = client.GetForecastAsync("Kolding default", "[password]").Result.Body.GetForecastResult;
+            var result = client.GetForecastAsync("Kolding default", password).Result.Body.GetForecastResult;
             var currentConditions = result.location.currentConditions;
             var next24hours = new List<WeatherForecast>();
             next24hours.Add(new WeatherForecast

@@ -30,7 +30,7 @@ namespace Dashboard
         private async void buttonGet_Click(object sender, EventArgs e)
         {
             var forecastServiceCall = new ForecastServiceCall();
-            List<WeatherForecast> result = await forecastServiceCall.GetAsync(textBoxPath.Text);
+            List<WeatherForecast> result = await forecastServiceCall.GetAsync(textBoxPath.Text, textBoxRestPassword.Text);
             dataGridView1.Columns.Add("Time", "Time");
             dataGridView1.Columns.Add("Temp", "Temp");
             dataGridView1.Columns.Add("CloudCover", "CloudCover");

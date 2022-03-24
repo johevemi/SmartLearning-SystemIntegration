@@ -40,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonGet = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBoxRestPassword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +146,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(776, 246);
             this.dataGridView1.TabIndex = 12;
             // 
+            // textBoxRestPassword
+            // 
+            this.textBoxRestPassword.Location = new System.Drawing.Point(628, 162);
+            this.textBoxRestPassword.Name = "textBoxRestPassword";
+            this.textBoxRestPassword.Size = new System.Drawing.Size(160, 23);
+            this.textBoxRestPassword.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(565, 166);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Password";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxRestPassword);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.buttonGet);
             this.Controls.Add(this.label1);
@@ -183,5 +203,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonGet;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBoxRestPassword;
+        private System.Windows.Forms.Label label2;
     }
 }

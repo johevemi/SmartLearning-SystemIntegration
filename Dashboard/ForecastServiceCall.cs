@@ -28,9 +28,10 @@ namespace Dashboard
     public class ForecastServiceCall
     {
         static HttpClient client = new HttpClient();
-        public async Task<List<WeatherForecast>> GetAsync(string path)
+        public async Task<List<WeatherForecast>> GetAsync(string path, string password)
         {
             List<WeatherForecast> list = new List<WeatherForecast>();
+            client.DefaultRequestHeaders.Add("password", password);
             HttpResponseMessage response = await client.GetAsync(path);
             if (response.IsSuccessStatusCode)
             {
