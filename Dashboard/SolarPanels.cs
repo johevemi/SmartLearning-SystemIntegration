@@ -24,7 +24,7 @@ namespace Dashboard
         public int Inverter()
         {
             var fileToGet = GetFileNameOfCurrentHour();
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create($"{RequestUriString}/{fileToGet}");
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create($"ftp://{RequestUriString}/{fileToGet}");
             request.Method = WebRequestMethods.Ftp.DownloadFile;
 
             // This example assumes the FTP site uses anonymous logon.
@@ -82,7 +82,7 @@ namespace Dashboard
             var month = curtentDateTime.ToString("MM");
             string current = $"danfoss-21{month}{day}{hour}";
 
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(RequestUriString);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create($"ftp://{RequestUriString}");
             request.Method = WebRequestMethods.Ftp.ListDirectory;
 
             // This example assumes the FTP site uses anonymous logon.
