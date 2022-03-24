@@ -117,6 +117,7 @@
             this.textBoxPath.Name = "textBoxPath";
             this.textBoxPath.Size = new System.Drawing.Size(395, 23);
             this.textBoxPath.TabIndex = 8;
+            this.textBoxPath.Text = "https://localhost:44308/WeatherForecast";
             // 
             // label1
             // 
