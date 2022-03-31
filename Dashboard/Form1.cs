@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +17,20 @@ namespace Dashboard
         public Form1()
         {
             InitializeComponent();
+            var secretHandler = new SecretHandler();
+            var s = secretHandler.GetSecrets();
+            textBoxRequestUriString.Text = s.FtpRequestUriString;
+            textBoxUserName.Text = s.FtpUserName;
+            textBoxPassword.Text = s.FtpPassword;
+            textBoxRestPassword.Text = s.RestPassword;
+            textBoxSqlServer.Text = s.SqlServer;
+            textBoxSqlUserName.Text = s.SqlUserName;
+            textBoxSqlPassword.Text = s.SqlPassword;
+        }
+
+        public class TestModel
+        {
+            public string Test { get; set; }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +61,38 @@ namespace Dashboard
                     dataGridView1.Rows.Add(item.Date.Hour, item.TemperatureC, item.CloudCover, item.Condition, item.Sunrise, item.Sunset, item.Visibility);
                 }
             }
+        }
+
+        private void GetSqlData_Click(object sender, EventArgs e)
+        {
+            var indoorTemp = new IndoorTempSqlConnection(textBoxSqlServer.Text, textBoxSqlUserName.Text, textBoxSqlPassword.Text);
+            var list = indoorTemp.GetSqlData();
+            dataGridViewSqlData.Columns.Add("Dato", "Dato");
+            dataGridViewSqlData.Columns.Add("Tidspunkt", "Tidspunkt");
+            dataGridViewSqlData.Columns.Add("Grader", "Grader");
+            
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    dataGridViewSqlData.Rows.Add(item.Dato, item.Tidspunkt, item.Grader);
+                }
+            }
+        }
+
+        private void save_Click(object sender, EventArgs e)
+        {
+            var secretHandler = new SecretHandler();
+            secretHandler.SaveSecrets(new Secrets
+            {
+                FtpRequestUriString = textBoxRequestUriString.Text,
+                FtpUserName = textBoxUserName.Text,
+                FtpPassword = textBoxPassword.Text,
+                RestPassword = textBoxRestPassword.Text,
+                SqlServer = textBoxSqlServer.Text,
+                SqlUserName = textBoxSqlUserName.Text,
+                SqlPassword = textBoxSqlPassword.Text
+            });
         }
     }
 }
